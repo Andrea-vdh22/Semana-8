@@ -25,10 +25,15 @@ Haz un commit: "Resuelve ejercicio 2".
 """
 
 # TODO: importa PRODUCTOS desde datos.
+from datos import PRODUCTOS
+
+
 # TODO: importa generar_reporte desde operaciones.
+from operaciones import generar_reporte
+
 
 # TODO: una vez completadas las importaciones, descomenta estas líneas.
-# print(generar_reporte(PRODUCTOS))
-# print(generar_reporte([]))
+print(generar_reporte(PRODUCTOS))
+print(generar_reporte([]))
 
 # TODO: añade otro ejemplo con print y su resultado esperado en un comentario.

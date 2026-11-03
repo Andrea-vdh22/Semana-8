@@ -32,20 +32,44 @@ Completa ejercicio 3: reservas y liberaciones
 """
 
 def reservar_puesto(puestos, coordenada):
-    # TODO: implementa esta funcion.
-    pass
+    fila, columna = coordenada
+    if 0 <= fila < len(puestos) and 0 <= columna < len(puestos[0]):
+        if puestos[fila][columna] == 0:
+            puestos[fila][columna] = 1
+            return True
+    return False
+
+    
 
 
 def liberar_puesto(puestos, coordenada):
-    # TODO: implementa esta funcion.
-    pass
+    fila, columna = coordenada
+    if 0 <= fila < len(puestos) and 0 <= columna < len(puestos[0]):
+        if puestos[fila][columna] == 1:
+            puestos[fila][columna] = 0
+            return True
+    return False
 
 
 if __name__ == "__main__":
     puestos = [[1, 0, 1], [0, 0, 1]]
 
-    # TODO: escribe las llamadas y muestra los resultados con print.
+     # TODO: escribe las llamadas y muestra los resultados con print.
+
+    print("Reservar (0, 1):", reservar_puesto(puestos, (0, 1)))  # True
+    print("Reservar otra vez (0, 1):", reservar_puesto(puestos  , (0, 1)))  # False
+    print("Liberar (1, 2):", liberar_puesto(puestos, (  1, 2)))  # True
+    print("Liberar otra vez (1, 2):", liberar_puesto(puestos, (1, 2)))  # False
+    print("Reservar (5, 0):", reservar_puesto(puestos, (5, 0)))  # False
+    print("Reservar (-1, 0):", reservar_puesto(puestos, (-1, 0)))  # False
+    print("Tablero final:", puestos)
+    
     # TODO: agrega al menos un caso propio.
+
+    print("Tablero antes del caso propio:", puestos)
+    print("Liberar (1, 0) [previamente reservado]:", liberar_puesto(puestos, (1, 0)))  # True
+    print("Intentar reservar fuera de rango (2, 3):", reservar_puesto(puestos, (2, 3)))  # False
+    print("Tablero después del caso propio:", puestos)
 
 # ANALISIS
 # TODO: responde aqui las preguntas del enunciado.

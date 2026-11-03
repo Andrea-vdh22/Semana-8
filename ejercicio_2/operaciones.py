@@ -22,5 +22,14 @@ Para [] devuelve listas y set vacíos, valor_total=0 y hay_agotados=False.
 
 
 def generar_reporte(productos):
-    # TODO: construye y devuelve el reporte.
-    pass
+  if not productos:
+    diccionario = {"disponibles": [], "valor_total": 0, "hay_agotados": False, "categorias": set(), "precios_con_recargo": []}
+  diccionario = [map(lambda x: x["nombre"], filter(lambda x: x["stock"] > 0, productos))]
+  valor_total = reduce(lambda contador, x: contador +x, (map(lambda x: x["precio"] * x["stock"], productos)), 0)
+  hay_agotados = any(map(lambda x: x["stock"] == 0, productos))
+  categorias = {x["categoria"] for x in productos}
+  recargo = lambda precio: round(precio * 1.1, 2)
+  precios_con_recargo = [(x["nombre"], recargo(x["precio"])) for x in productos if x["stock"] > 0]
+  diccionario = {"disponibles": diccionario, "valor_total": valor_total, "hay_agotados": hay_agotados, "categorias": categorias, "precios_con_recargo": precios_con_recargo}
+  return diccionario
+        
